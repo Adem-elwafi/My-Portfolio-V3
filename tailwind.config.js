@@ -20,6 +20,9 @@ export default {
       spacing: {
         'section': '4rem',
         'card': '1.5rem',
+      },
+      animation: {
+        'bounce': 'bounce 2s infinite',
       }
     },
   },

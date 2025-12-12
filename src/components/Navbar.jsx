@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -22,6 +21,13 @@ const Navbar = () => {
     { path: '/contact', label: 'Contact' },
   ];
 
+  const isActiveLink = (path) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+  };
+
   return (
     <nav className="bg-darkbg text-white sticky top-0 z-50 shadow-lg">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,7 +47,7 @@ const Navbar = () => {
                 key={link.path}
                 to={link.path}
                 className={`font-body font-medium transition-colors duration-300 hover:text-primary ${
-                  location.pathname === link.path 
+                  isActiveLink(link.path) 
                     ? 'text-primary' 
                     : 'text-white'
                 }`}
@@ -79,7 +85,7 @@ const Navbar = () => {
                   to={link.path}
                   onClick={closeMenu}
                   className={`block px-3 py-2 rounded-md font-body font-medium transition-colors duration-300 ${
-                    location.pathname === link.path
+                    isActiveLink(link.path)
                       ? 'bg-gray-800 text-primary'
                       : 'text-white hover:text-primary hover:bg-gray-800'
                   }`}
