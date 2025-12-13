@@ -4,32 +4,32 @@ import Navbar from '../components/Navbar';
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background dark:bg-gray-900 transition-colors duration-300">
       
       {/* Hero Section */}
-      <section className="h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
+      <section className="h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 dark:bg-gray-900">
         <div className="text-center max-w-4xl mx-auto">
           
           {/* Welcome Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 mb-6">
-            <span className="text-sm font-semibold text-primary font-body">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 dark:bg-primary/20 mb-6">
+            <span className="text-sm font-semibold text-primary dark:text-blue-400 font-body">
               Welcome to my portfolio
             </span>
           </div>
           
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-darkbg mb-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-darkbg dark:text-white mb-4">
             Adem Elwafi —{' '}
             <span className="text-primary">Full Stack Developer</span>
           </h1>
           
           {/* Subheading */}
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-semibold text-secondary mb-6">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-semibold text-secondary dark:text-purple-400 mb-6">
             Crafting Digital Experiences
           </h2>
           
           {/* Tagline */}
-          <p className="text-lg sm:text-xl text-text-gray font-body mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-text-gray dark:text-gray-300 font-body mb-8 max-w-2xl mx-auto leading-relaxed">
             I build modern, responsive web applications with clean code and intuitive design. 
             Passionate about creating solutions that make a difference.
           </p>
@@ -82,9 +82,9 @@ const Home = () => {
       </section>
       
       {/* Skills Preview Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-800 transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
-          <h3 className="text-3xl font-heading font-bold text-darkbg text-center mb-12">
+          <h3 className="text-3xl font-heading font-bold text-darkbg dark:text-white text-center mb-12">
             Technologies I Work With
           </h3>
           
@@ -93,9 +93,9 @@ const Home = () => {
               'PostgreSQL', 'AWS', 'Docker', 'Git', 'Tailwind', 'GraphQL'].map((tech) => (
               <div 
                 key={tech}
-                className="bg-background p-4 rounded-lg text-center hover:shadow-lg transition-shadow duration-300"
+                className="bg-background dark:bg-gray-700 p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 hover:scale-105"
               >
-                <span className="font-body font-medium text-text-gray">{tech}</span>
+                <span className="font-body font-medium text-text-gray dark:text-gray-200">{tech}</span>
               </div>
             ))}
           </div>
@@ -103,7 +103,7 @@ const Home = () => {
           <div className="text-center mt-12">
             <Link
               to="/skills"
-              className="text-primary font-body font-semibold hover:text-secondary transition-colors duration-300 inline-flex items-center"
+              className="text-primary dark:text-blue-400 font-body font-semibold hover:text-secondary dark:hover:text-purple-400 transition-colors duration-300 inline-flex items-center"
             >
               View all skills
               <svg 

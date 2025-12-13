@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 // Using placeholder images for now
 const ProjectCard = ({ project }) => {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-card overflow-hidden hover:scale-105 transition-transform duration-300 group border border-gray-100">
+    <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-card overflow-hidden hover:scale-105 transition-transform duration-300 group border border-gray-100 dark:border-gray-700">
       {/* Project Image */}
-      <div className="relative h-48 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20">
+      <div className="relative h-48 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 dark:from-blue-900/30 dark:to-purple-900/30">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-4xl text-gray-400 group-hover:text-primary transition-colors">
             {project.icon}
@@ -23,10 +23,10 @@ const ProjectCard = ({ project }) => {
       
       {/* Project Content */}
       <div className="pt-6">
-        <h3 className="text-xl font-heading font-bold text-darkbg mb-3 group-hover:text-primary transition-colors">
+        <h3 className="text-xl font-heading font-bold text-darkbg dark:text-white mb-3 group-hover:text-primary dark:group-hover:text-blue-400 transition-colors">
           {project.title}
         </h3>
-        <p className="text-text-gray font-body leading-relaxed mb-4">
+        <p className="text-text-gray dark:text-gray-300 font-body leading-relaxed mb-4">
           {project.description}
         </p>
         
@@ -35,7 +35,7 @@ const ProjectCard = ({ project }) => {
           {project.technologies.map((tech, index) => (
             <span 
               key={index}
-              className="bg-background text-text-gray text-xs font-medium px-3 py-1 rounded-full border border-gray-200"
+              className="bg-background dark:bg-gray-700 text-text-gray dark:text-gray-200 text-xs font-medium px-3 py-1 rounded-full border border-gray-200 dark:border-gray-600"
             >
               {tech}
             </span>
@@ -48,7 +48,7 @@ const ProjectCard = ({ project }) => {
             href={project.demoLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 bg-primary text-white hover:bg-secondary rounded-md px-4 py-3 font-body font-semibold text-center transition-all duration-300 hover:scale-[1.02] shadow hover:shadow-md"
+            className="flex-1 bg-primary hover:bg-secondary rounded-md px-4 py-3 font-body font-semibold text-center transition-all duration-300 hover:scale-[1.02] shadow hover:shadow-md text-white"
           >
             Live Demo
           </a>
@@ -56,7 +56,7 @@ const ProjectCard = ({ project }) => {
             href={project.codeLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-md px-4 py-3 font-body font-semibold text-center transition-all duration-300 hover:scale-[1.02]"
+            className="flex-1 border-2 border-primary dark:border-blue-400 text-primary dark:text-blue-400 hover:bg-primary dark:hover:bg-blue-400 hover:text-white rounded-md px-4 py-3 font-body font-semibold text-center transition-all duration-300 hover:scale-[1.02]"
           >
             View Code
           </a>
@@ -131,32 +131,32 @@ const Projects = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background dark:bg-gray-900 transition-colors duration-300">
       
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Page Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold text-darkbg mb-6">
-            My <span className="text-primary">Projects</span>
+          <h1 className="text-4xl md:text-5xl font-heading font-bold text-darkbg dark:text-white mb-6">
+            My <span className="text-primary dark:text-blue-400">Projects</span>
           </h1>
-          <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-lg text-text-gray font-body max-w-2xl mx-auto mb-8">
+          <div className="w-24 h-1 bg-primary dark:bg-blue-400 mx-auto mb-6"></div>
+          <p className="text-lg text-text-gray dark:text-gray-300 font-body max-w-2xl mx-auto mb-8">
             Here are some of my recent projects. Each represents a unique challenge 
             and an opportunity to solve real-world problems with code.
           </p>
           
           {/* Filter Buttons */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
-            <button className="bg-primary text-white px-5 py-2 rounded-full font-body font-medium hover:bg-secondary transition-colors">
+            <button className="bg-primary hover:bg-secondary text-white px-5 py-2 rounded-full font-body font-medium transition-colors">
               All Projects
             </button>
-            <button className="bg-white text-text-gray border border-gray-300 px-5 py-2 rounded-full font-body font-medium hover:border-primary hover:text-primary transition-colors">
+            <button className="bg-white dark:bg-gray-800 text-text-gray dark:text-gray-300 border border-gray-300 dark:border-gray-600 px-5 py-2 rounded-full font-body font-medium hover:border-primary dark:hover:border-blue-400 hover:text-primary dark:hover:text-blue-400 transition-colors">
               Full Stack
             </button>
-            <button className="bg-white text-text-gray border border-gray-300 px-5 py-2 rounded-full font-body font-medium hover:border-primary hover:text-primary transition-colors">
+            <button className="bg-white dark:bg-gray-800 text-text-gray dark:text-gray-300 border border-gray-300 dark:border-gray-600 px-5 py-2 rounded-full font-body font-medium hover:border-primary dark:hover:border-blue-400 hover:text-primary dark:hover:text-blue-400 transition-colors">
               Frontend
             </button>
-            <button className="bg-white text-text-gray border border-gray-300 px-5 py-2 rounded-full font-body font-medium hover:border-primary hover:text-primary transition-colors">
+            <button className="bg-white dark:bg-gray-800 text-text-gray dark:text-gray-300 border border-gray-300 dark:border-gray-600 px-5 py-2 rounded-full font-body font-medium hover:border-primary dark:hover:border-blue-400 hover:text-primary dark:hover:text-blue-400 transition-colors">
               Mobile
             </button>
           </div>
@@ -170,33 +170,33 @@ const Projects = () => {
         </div>
         
         {/* Stats Section */}
-        <div className="mt-20 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-8 md:p-12">
+        <div className="mt-20 bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 md:p-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <div className="text-3xl md:text-4xl font-heading font-bold text-primary mb-2">20+</div>
-              <div className="text-text-gray font-body">Projects Completed</div>
+              <div className="text-3xl md:text-4xl font-heading font-bold text-primary dark:text-blue-400 mb-2">20+</div>
+              <div className="text-text-gray dark:text-gray-300 font-body">Projects Completed</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-heading font-bold text-primary mb-2">15+</div>
-              <div className="text-text-gray font-body">Happy Clients</div>
+              <div className="text-3xl md:text-4xl font-heading font-bold text-primary dark:text-blue-400 mb-2">15+</div>
+              <div className="text-text-gray dark:text-gray-300 font-body">Happy Clients</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-heading font-bold text-primary mb-2">5+</div>
-              <div className="text-text-gray font-body">Years Experience</div>
+              <div className="text-3xl md:text-4xl font-heading font-bold text-primary dark:text-blue-400 mb-2">5+</div>
+              <div className="text-text-gray dark:text-gray-300 font-body">Years Experience</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-heading font-bold text-primary mb-2">100%</div>
-              <div className="text-text-gray font-body">Satisfaction Rate</div>
+              <div className="text-3xl md:text-4xl font-heading font-bold text-primary dark:text-blue-400 mb-2">100%</div>
+              <div className="text-text-gray dark:text-gray-300 font-body">Satisfaction Rate</div>
             </div>
           </div>
         </div>
         
         {/* CTA Section */}
         <div className="mt-20 text-center">
-          <h2 className="text-3xl font-heading font-bold text-darkbg mb-6">
+          <h2 className="text-3xl font-heading font-bold text-darkbg dark:text-white mb-6">
             Have a project in mind?
           </h2>
-          <p className="text-lg text-text-gray font-body max-w-2xl mx-auto mb-8">
+          <p className="text-lg text-text-gray dark:text-gray-300 font-body max-w-2xl mx-auto mb-8">
             I'm always open to discussing new opportunities and interesting projects.
             Let's build something amazing together!
           </p>

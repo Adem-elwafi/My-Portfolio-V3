@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class', // Add this line for class-based dark mode
   theme: {
     extend: {
       colors: {
@@ -21,9 +22,6 @@ export default {
         'section': '4rem',
         'card': '1.5rem',
       },
-      animation: {
-        'bounce': 'bounce 2s infinite',
-      }
     },
   },
   plugins: [],

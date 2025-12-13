@@ -30,15 +30,15 @@ const ProfileImage = () => (
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-background">      
+    <div className="min-h-screen bg-background dark:bg-gray-900 transition-colors duration-300">      
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Page Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold text-darkbg mb-4">
-            About <span className="text-primary">Me</span>
+          <h1 className="text-4xl md:text-5xl font-heading font-bold text-darkbg dark:text-white mb-4">
+            About <span className="text-primary dark:text-blue-400">Me</span>
           </h1>
-          <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-lg text-text-gray font-body max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-primary dark:bg-blue-400 mx-auto mb-6"></div>
+          <p className="text-lg text-text-gray dark:text-gray-300 font-body max-w-2xl mx-auto">
             Learn more about my journey, skills, and passion for technology
           </p>
         </div>
@@ -55,15 +55,15 @@ const About = () => {
           <div className="lg:w-3/5">
             {/* Introduction */}
             <div className="mb-10">
-              <h2 className="text-3xl font-heading font-bold text-darkbg mb-4">
+              <h2 className="text-3xl font-heading font-bold text-darkbg dark:text-white mb-4">
                 Full Stack Developer & Problem Solver
               </h2>
-              <p className="text-lg text-text-gray leading-relaxed font-body mb-4">
-                Hello! I'm <span className="font-semibold text-primary">Adem Elwafi</span>, a passionate 
+              <p className="text-lg text-text-gray dark:text-gray-300 leading-relaxed font-body mb-4">
+                Hello! I'm <span className="font-semibold text-primary dark:text-blue-400">Adem Elwafi</span>, a passionate 
                 Full Stack Developer with expertise in creating modern, responsive web applications. 
                 I believe in writing clean, efficient code and building intuitive user experiences.
               </p>
-              <p className="text-lg text-text-gray leading-relaxed font-body">
+              <p className="text-lg text-text-gray dark:text-gray-300 leading-relaxed font-body">
                 With a strong foundation in both frontend and backend technologies, I enjoy 
                 tackling complex challenges and turning ideas into functional, beautiful products.
               </p>
@@ -71,27 +71,27 @@ const About = () => {
             
             {/* Education Section */}
             <div className="mb-10">
-              <h3 className="text-2xl font-heading font-bold text-darkbg mb-4">
-                <span className="text-primary">Education</span> & Background
+              <h3 className="text-2xl font-heading font-bold text-darkbg dark:text-white mb-4">
+                <span className="text-primary dark:text-blue-400">Education</span> & Background
               </h3>
               <div className="space-y-4">
-                <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-primary">
-                  <h4 className="font-heading font-bold text-xl text-darkbg mb-1">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border-l-4 border-primary dark:border-blue-400">
+                  <h4 className="font-heading font-bold text-xl text-darkbg dark:text-white mb-1">
                     Computer Science Degree
                   </h4>
-                  <p className="font-body text-secondary font-medium mb-2">University Name • 2018-2022</p>
-                  <p className="text-text-gray leading-relaxed">
+                  <p className="font-body text-secondary dark:text-purple-400 font-medium mb-2">University Name • 2018-2022</p>
+                  <p className="text-text-gray dark:text-gray-300 leading-relaxed">
                     Graduated with honors, focusing on software engineering, algorithms, and web development. 
                     Participated in multiple hackathons and programming competitions.
                   </p>
                 </div>
                 
-                <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-secondary">
-                  <h4 className="font-heading font-bold text-xl text-darkbg mb-1">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border-l-4 border-secondary dark:border-purple-400">
+                  <h4 className="font-heading font-bold text-xl text-darkbg dark:text-white mb-1">
                     Full Stack Web Development Bootcamp
                   </h4>
-                  <p className="font-body text-secondary font-medium mb-2">Coding School • 2022</p>
-                  <p className="text-text-gray leading-relaxed">
+                  <p className="font-body text-secondary dark:text-purple-400 font-medium mb-2">Coding School • 2022</p>
+                  <p className="text-text-gray dark:text-gray-300 leading-relaxed">
                     Intensive program covering modern web technologies including React, Node.js, 
                     databases, and cloud deployment.
                   </p>
@@ -101,38 +101,38 @@ const About = () => {
             
             {/* Experience Section */}
             <div className="mb-10">
-              <h3 className="text-2xl font-heading font-bold text-darkbg mb-4">
-                <span className="text-primary">Professional</span> Experience
+              <h3 className="text-2xl font-heading font-bold text-darkbg dark:text-white mb-4">
+                <span className="text-primary dark:text-blue-400">Professional</span> Experience
               </h3>
               <div className="space-y-4">
-                <div className="bg-white p-6 rounded-lg shadow-md">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3">
-                    <h4 className="font-heading font-bold text-xl text-darkbg">
+                    <h4 className="font-heading font-bold text-xl text-darkbg dark:text-white">
                       Full Stack Developer
                     </h4>
-                    <span className="font-body text-primary font-semibold bg-primary/10 px-3 py-1 rounded-full">
+                    <span className="font-body text-primary dark:text-blue-400 font-semibold bg-primary/10 dark:bg-blue-400/20 px-3 py-1 rounded-full">
                       2022 - Present
                     </span>
                   </div>
-                  <p className="font-body text-secondary font-medium mb-3">Tech Company • Remote</p>
+                  <p className="font-body text-secondary dark:text-purple-400 font-medium mb-3">Tech Company • Remote</p>
                   <ul className="space-y-2">
                     <li className="flex items-start">
-                      <svg className="w-5 h-5 text-primary mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-5 h-5 text-primary dark:text-blue-400 mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-gray">Developed and maintained multiple full-stack applications using React, Node.js, and MongoDB</span>
+                      <span className="text-text-gray dark:text-gray-300">Developed and maintained multiple full-stack applications using React, Node.js, and MongoDB</span>
                     </li>
                     <li className="flex items-start">
-                      <svg className="w-5 h-5 text-primary mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-5 h-5 text-primary dark:text-blue-400 mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-gray">Led frontend development for customer-facing dashboard, improving user engagement by 40%</span>
+                      <span className="text-text-gray dark:text-gray-300">Led frontend development for customer-facing dashboard, improving user engagement by 40%</span>
                     </li>
                     <li className="flex items-start">
-                      <svg className="w-5 h-5 text-primary mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-5 h-5 text-primary dark:text-blue-400 mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-text-gray">Implemented RESTful APIs and integrated third-party services</span>
+                      <span className="text-text-gray dark:text-gray-300">Implemented RESTful APIs and integrated third-party services</span>
                     </li>
                   </ul>
                 </div>
@@ -140,36 +140,36 @@ const About = () => {
             </div>
             
             {/* Focus & Philosophy */}
-            <div className="bg-gradient-to-r from-primary/10 to-secondary/10 p-8 rounded-xl">
-              <h3 className="text-2xl font-heading font-bold text-darkbg mb-4">
-                My <span className="text-primary">Development</span> Philosophy
+            <div className="bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-blue-900/20 dark:to-purple-900/20 p-8 rounded-xl">
+              <h3 className="text-2xl font-heading font-bold text-darkbg dark:text-white mb-4">
+                My <span className="text-primary dark:text-blue-400">Development</span> Philosophy
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <div className="text-primary text-2xl mb-3">🚀</div>
-                  <h4 className="font-heading font-bold text-lg text-darkbg mb-2">Performance First</h4>
-                  <p className="text-text-gray text-sm">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                  <div className="text-primary dark:text-blue-400 text-2xl mb-3">🚀</div>
+                  <h4 className="font-heading font-bold text-lg text-darkbg dark:text-white mb-2">Performance First</h4>
+                  <p className="text-text-gray dark:text-gray-300 text-sm">
                     Building fast, efficient applications that provide seamless user experiences across all devices.
                   </p>
                 </div>
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <div className="text-primary text-2xl mb-3">💡</div>
-                  <h4 className="font-heading font-bold text-lg text-darkbg mb-2">Clean Code</h4>
-                  <p className="text-text-gray text-sm">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                  <div className="text-primary dark:text-blue-400 text-2xl mb-3">💡</div>
+                  <h4 className="font-heading font-bold text-lg text-darkbg dark:text-white mb-2">Clean Code</h4>
+                  <p className="text-text-gray dark:text-gray-300 text-sm">
                     Writing maintainable, well-documented code following best practices and design patterns.
                   </p>
                 </div>
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <div className="text-primary text-2xl mb-3">🎨</div>
-                  <h4 className="font-heading font-bold text-lg text-darkbg mb-2">User-Centered Design</h4>
-                  <p className="text-text-gray text-sm">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                  <div className="text-primary dark:text-blue-400 text-2xl mb-3">🎨</div>
+                  <h4 className="font-heading font-bold text-lg text-darkbg dark:text-white mb-2">User-Centered Design</h4>
+                  <p className="text-text-gray dark:text-gray-300 text-sm">
                     Creating intuitive interfaces that prioritize user needs and accessibility.
                   </p>
                 </div>
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <div className="text-primary text-2xl mb-3">🔄</div>
-                  <h4 className="font-heading font-bold text-lg text-darkbg mb-2">Continuous Learning</h4>
-                  <p className="text-text-gray text-sm">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                  <div className="text-primary dark:text-blue-400 text-2xl mb-3">🔄</div>
+                  <h4 className="font-heading font-bold text-lg text-darkbg dark:text-white mb-2">Continuous Learning</h4>
+                  <p className="text-text-gray dark:text-gray-300 text-sm">
                     Staying updated with emerging technologies and constantly improving my skills.
                   </p>
                 </div>

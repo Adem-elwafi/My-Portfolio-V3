@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { isDarkMode, toggleTheme } = useTheme();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -55,24 +58,54 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+            
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors"
+              aria-label="Toggle theme"
+              title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {isDarkMode ? (
+                <FaSun className="w-5 h-5 text-yellow-400" />
+              ) : (
+                <FaMoon className="w-5 h-5 text-blue-300" />
+              )}
+            </button>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={toggleMenu}
-            className="md:hidden p-2 rounded-md text-white hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? (
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
+          {/* Mobile menu button and theme toggle */}
+          <div className="flex items-center gap-4 md:hidden">
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {isDarkMode ? (
+                <FaSun className="w-5 h-5 text-yellow-400" />
+              ) : (
+                <FaMoon className="w-5 h-5 text-blue-300" />
+              )}
+            </button>
+            
+            {/* Mobile menu button */}
+            <button
+              onClick={toggleMenu}
+              className="p-2 rounded-md text-white hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? (
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation Menu */}

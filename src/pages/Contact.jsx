@@ -100,16 +100,16 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background dark:bg-gray-900 transition-colors duration-300">
       
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Page Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold text-darkbg mb-6">
-            Get in <span className="text-primary">Touch</span>
+          <h1 className="text-4xl md:text-5xl font-heading font-bold text-darkbg dark:text-white mb-6">
+            Get in <span className="text-primary dark:text-blue-400">Touch</span>
           </h1>
-          <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-lg text-text-gray font-body max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-primary dark:bg-blue-400 mx-auto mb-6"></div>
+          <p className="text-lg text-text-gray dark:text-gray-300 font-body max-w-2xl mx-auto">
             Have a project in mind or want to collaborate? Feel free to reach out. 
             I'm always open to discussing new opportunities and interesting ideas.
           </p>
@@ -117,14 +117,14 @@ const Contact = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Left Column - Contact Form */}
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <h2 className="text-2xl font-heading font-bold text-darkbg mb-8 text-center">
-              Send Me a <span className="text-primary">Message</span>
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+            <h2 className="text-2xl font-heading font-bold text-darkbg dark:text-white mb-8 text-center">
+              Send Me a <span className="text-primary dark:text-blue-400">Message</span>
             </h2>
             
             {submitStatus === 'success' && (
-              <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                <p className="text-green-700 font-body text-center">
+              <div className="mb-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg">
+                <p className="text-green-700 dark:text-green-400 font-body text-center">
                   ✅ Thank you for your message! I'll get back to you soon.
                 </p>
               </div>
@@ -133,7 +133,7 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name Field */}
               <div>
-                <label htmlFor="name" className="block text-sm font-body font-medium text-text-gray mb-2">
+                <label htmlFor="name" className="block text-sm font-body font-medium text-text-gray dark:text-gray-300 mb-2">
                   Your Name *
                 </label>
                 <input
@@ -143,14 +143,14 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full p-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all font-body"
+                  className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-primary dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all font-body bg-white dark:bg-gray-700 text-darkbg dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
                   placeholder="John Doe"
                 />
               </div>
               
               {/* Email Field */}
               <div>
-                <label htmlFor="email" className="block text-sm font-body font-medium text-text-gray mb-2">
+                <label htmlFor="email" className="block text-sm font-body font-medium text-text-gray dark:text-gray-300 mb-2">
                   Email Address *
                 </label>
                 <input
@@ -160,14 +160,14 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full p-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all font-body"
+                  className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-primary dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all font-body bg-white dark:bg-gray-700 text-darkbg dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
                   placeholder="john@example.com"
                 />
               </div>
               
               {/* Message Field */}
               <div>
-                <label htmlFor="message" className="block text-sm font-body font-medium text-text-gray mb-2">
+                <label htmlFor="message" className="block text-sm font-body font-medium text-text-gray dark:text-gray-300 mb-2">
                   Your Message *
                 </label>
                 <textarea
@@ -177,7 +177,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full p-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all font-body resize-none"
+                  className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-primary dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all font-body resize-none bg-white dark:bg-gray-700 text-darkbg dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
                   placeholder="Tell me about your project..."
                 />
               </div>
@@ -201,7 +201,7 @@ const Contact = () => {
                 )}
               </button>
               
-              <p className="text-sm text-text-gray font-body text-center mt-4">
+              <p className="text-sm text-text-gray dark:text-gray-400 font-body text-center mt-4">
                 * Required fields
               </p>
             </form>
@@ -210,9 +210,9 @@ const Contact = () => {
           {/* Right Column - Contact Info & Social Links */}
           <div className="space-y-8">
             {/* Contact Information */}
-            <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8">
-              <h2 className="text-2xl font-heading font-bold text-darkbg mb-6 text-center">
-                Contact <span className="text-primary">Information</span>
+            <div className="bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8">
+              <h2 className="text-2xl font-heading font-bold text-darkbg dark:text-white mb-6 text-center">
+                Contact <span className="text-primary dark:text-blue-400">Information</span>
               </h2>
               
               <div className="space-y-6">
@@ -222,14 +222,14 @@ const Contact = () => {
                     href={info.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 group"
+                    className="flex items-start space-x-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 group"
                   >
                     <div className="text-xl mt-1">{info.icon}</div>
                     <div>
-                      <h3 className="font-heading font-bold text-darkbg group-hover:text-primary transition-colors">
+                      <h3 className="font-heading font-bold text-darkbg dark:text-white group-hover:text-primary dark:group-hover:text-blue-400 transition-colors">
                         {info.title}
                       </h3>
-                      <p className="text-text-gray font-body group-hover:text-secondary transition-colors">
+                      <p className="text-text-gray dark:text-gray-300 font-body group-hover:text-secondary dark:group-hover:text-purple-400 transition-colors">
                         {info.value}
                       </p>
                     </div>
@@ -239,9 +239,9 @@ const Contact = () => {
             </div>
             
             {/* Social Links */}
-            <div className="bg-white rounded-2xl shadow-xl p-8">
-              <h2 className="text-2xl font-heading font-bold text-darkbg mb-6 text-center">
-                Connect on <span className="text-primary">Social</span>
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+              <h2 className="text-2xl font-heading font-bold text-darkbg dark:text-white mb-6 text-center">
+                Connect on <span className="text-primary dark:text-blue-400">Social</span>
               </h2>
               
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -251,43 +251,43 @@ const Contact = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-primary hover:shadow-lg transition-all duration-300 group"
+                    className="flex flex-col items-center p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-blue-400 hover:shadow-lg transition-all duration-300 group"
                   >
-                    <div className={`text-primary text-3xl mb-2 group-hover:text-secondary transition-colors ${social.color}`}>
+                    <div className={`text-primary dark:text-blue-400 text-3xl mb-2 group-hover:text-secondary dark:group-hover:text-purple-400 transition-colors ${social.color}`}>
                       {social.icon}
                     </div>
-                    <span className="font-body font-medium text-text-gray group-hover:text-darkbg">
+                    <span className="font-body font-medium text-text-gray dark:text-gray-300 group-hover:text-darkbg dark:group-hover:text-white">
                       {social.name}
                     </span>
                   </a>
                 ))}
               </div>
               
-              <p className="text-center text-text-gray font-body mt-6">
+              <p className="text-center text-text-gray dark:text-gray-300 font-body mt-6">
                 Feel free to connect with me on any platform!
               </p>
             </div>
             
             {/* Response Time Info */}
-            <div className="bg-white rounded-2xl shadow-xl p-8">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
               <div className="flex items-center justify-center space-x-3 mb-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-primary/10 dark:bg-blue-400/20 rounded-full flex items-center justify-center">
                   <span className="text-2xl">⏰</span>
                 </div>
                 <div>
-                  <h3 className="font-heading font-bold text-darkbg">Quick Response</h3>
-                  <p className="text-text-gray font-body text-sm">
+                  <h3 className="font-heading font-bold text-darkbg dark:text-white">Quick Response</h3>
+                  <p className="text-text-gray dark:text-gray-300 font-body text-sm">
                     Typically replies within 24 hours
                   </p>
                 </div>
               </div>
               <div className="flex items-center justify-center space-x-3">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-primary/10 dark:bg-blue-400/20 rounded-full flex items-center justify-center">
                   <span className="text-2xl">💼</span>
                 </div>
                 <div>
-                  <h3 className="font-heading font-bold text-darkbg">Open to Work</h3>
-                  <p className="text-text-gray font-body text-sm">
+                  <h3 className="font-heading font-bold text-darkbg dark:text-white">Open to Work</h3>
+                  <p className="text-text-gray dark:text-gray-300 font-body text-sm">
                     Available for freelance & full-time roles
                   </p>
                 </div>
@@ -298,34 +298,34 @@ const Contact = () => {
         
         {/* Additional Info */}
         <div className="mt-16 text-center max-w-3xl mx-auto">
-          <h3 className="text-2xl font-heading font-bold text-darkbg mb-6">
-            Let's Build Something <span className="text-primary">Amazing</span> Together
+          <h3 className="text-2xl font-heading font-bold text-darkbg dark:text-white mb-6">
+            Let's Build Something <span className="text-primary dark:text-blue-400">Amazing</span> Together
           </h3>
-          <p className="text-lg text-text-gray font-body mb-8">
+          <p className="text-lg text-text-gray dark:text-gray-300 font-body mb-8">
             Whether you need a website, a mobile app, or help with an existing project, 
             I'm here to help bring your ideas to life. I approach every project with 
             attention to detail and a commitment to excellence.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="text-primary text-2xl mb-3">🎯</div>
-              <h4 className="font-heading font-bold text-darkbg mb-2">Clear Communication</h4>
-              <p className="text-text-gray text-sm">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm">
+              <div className="text-primary dark:text-blue-400 text-2xl mb-3">🎯</div>
+              <h4 className="font-heading font-bold text-darkbg dark:text-white mb-2">Clear Communication</h4>
+              <p className="text-text-gray dark:text-gray-300 text-sm">
                 Regular updates and transparent discussions throughout the project
               </p>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="text-primary text-2xl mb-3">⚡</div>
-              <h4 className="font-heading font-bold text-darkbg mb-2">Fast Delivery</h4>
-              <p className="text-text-gray text-sm">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm">
+              <div className="text-primary dark:text-blue-400 text-2xl mb-3">⚡</div>
+              <h4 className="font-heading font-bold text-darkbg dark:text-white mb-2">Fast Delivery</h4>
+              <p className="text-text-gray dark:text-gray-300 text-sm">
                 Efficient workflows and timely delivery without compromising quality
               </p>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="text-primary text-2xl mb-3">🤝</div>
-              <h4 className="font-heading font-bold text-darkbg mb-2">Ongoing Support</h4>
-              <p className="text-text-gray text-sm">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm">
+              <div className="text-primary dark:text-blue-400 text-2xl mb-3">🤝</div>
+              <h4 className="font-heading font-bold text-darkbg dark:text-white mb-2">Ongoing Support</h4>
+              <p className="text-text-gray dark:text-gray-300 text-sm">
                 Continued assistance and maintenance after project completion
               </p>
             </div>
@@ -334,7 +334,7 @@ const Contact = () => {
       </main>
       
       {/* Footer Note */}
-      <footer className="bg-darkbg text-white py-8 mt-16">
+      <footer className="bg-darkbg dark:bg-gray-950 text-white py-8 mt-16">
         <div className="container mx-auto px-4 text-center">
           <p className="font-body">
             © {new Date().getFullYear()} Adem Elwafi. All rights reserved.

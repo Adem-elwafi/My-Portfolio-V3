@@ -18,29 +18,29 @@ import { TbBrandVscode } from 'react-icons/tb'; // Alternative for VS Code
 
 const SkillCard = ({ skill }) => {
   return (
-    <div className="bg-white shadow-md rounded-lg p-card flex flex-col items-center hover:scale-105 transition-transform duration-300 group border border-gray-100 hover:border-primary/30 hover:shadow-lg">
+    <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-card flex flex-col items-center hover:scale-105 transition-transform duration-300 group border border-gray-100 dark:border-gray-700 hover:border-primary/30 dark:hover:border-blue-400/30 hover:shadow-lg">
       {/* Skill Icon */}
-      <div className="text-primary text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+      <div className="text-primary dark:text-blue-400 text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
         {skill.icon}
       </div>
       
       {/* Skill Name */}
-      <h3 className="text-lg font-heading font-bold text-darkbg mb-2 text-center">
+      <h3 className="text-lg font-heading font-bold text-darkbg dark:text-white mb-2 text-center">
         {skill.name}
       </h3>
       
       {/* Skill Description */}
-      <p className="text-sm text-text-gray font-body text-center mb-3">
+      <p className="text-sm text-text-gray dark:text-gray-300 font-body text-center mb-3">
         {skill.description}
       </p>
       
       {/* Skill Level Indicator */}
       <div className="w-full mb-3">
-        <div className="flex justify-between text-xs text-text-gray mb-1">
+        <div className="flex justify-between text-xs text-text-gray dark:text-gray-300 mb-1">
           <span>Proficiency</span>
-          <span className="font-semibold text-primary">{skill.level}%</span>
+          <span className="font-semibold text-primary dark:text-blue-400">{skill.level}%</span>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-2">
+        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
           <div 
             className="bg-gradient-to-r from-primary to-secondary h-2 rounded-full transition-all duration-500"
             style={{ width: `${skill.level}%` }}
@@ -289,51 +289,51 @@ const Skills = () => {
   const categories = ['Frontend', 'Backend', 'Database', 'DevOps', 'Testing', 'Design', 'Tools'];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background dark:bg-gray-900 transition-colors duration-300">
       
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Page Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold text-darkbg mb-6">
-            My <span className="text-primary">Skills</span>
+          <h1 className="text-4xl md:text-5xl font-heading font-bold text-darkbg dark:text-white mb-6">
+            My <span className="text-primary dark:text-blue-400">Skills</span>
           </h1>
-          <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-lg text-text-gray font-body max-w-3xl mx-auto mb-8">
+          <div className="w-24 h-1 bg-primary dark:bg-blue-400 mx-auto mb-6"></div>
+          <p className="text-lg text-text-gray dark:text-gray-300 font-body max-w-3xl mx-auto mb-8">
             Here are the technologies and tools I work with. I'm constantly learning 
             and expanding my skill set to stay up-to-date with the latest industry trends.
           </p>
           
           {/* Skill Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto mb-12">
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="text-3xl font-heading font-bold text-primary mb-2">26+</div>
-              <div className="text-text-gray font-body">Technologies</div>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm text-center">
+              <div className="text-3xl font-heading font-bold text-primary dark:text-blue-400 mb-2">26+</div>
+              <div className="text-text-gray dark:text-gray-300 font-body">Technologies</div>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="text-3xl font-heading font-bold text-primary mb-2">5+</div>
-              <div className="text-text-gray font-body">Years Experience</div>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm text-center">
+              <div className="text-3xl font-heading font-bold text-primary dark:text-blue-400 mb-2">5+</div>
+              <div className="text-text-gray dark:text-gray-300 font-body">Years Experience</div>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="text-3xl font-heading font-bold text-primary mb-2">50+</div>
-              <div className="text-text-gray font-body">Projects Built</div>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm text-center">
+              <div className="text-3xl font-heading font-bold text-primary dark:text-blue-400 mb-2">50+</div>
+              <div className="text-text-gray dark:text-gray-300 font-body">Projects Built</div>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="text-3xl font-heading font-bold text-primary mb-2">∞</div>
-              <div className="text-text-gray font-body">Learning Mindset</div>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm text-center">
+              <div className="text-3xl font-heading font-bold text-primary dark:text-blue-400 mb-2">∞</div>
+              <div className="text-text-gray dark:text-gray-300 font-body">Learning Mindset</div>
             </div>
           </div>
         </div>
         
         {/* Category Filter */}
         <div className="mb-12">
-          <h2 className="text-2xl font-heading font-bold text-darkbg mb-6 text-center">
-            Browse by <span className="text-primary">Category</span>
+          <h2 className="text-2xl font-heading font-bold text-darkbg dark:text-white mb-6 text-center">
+            Browse by <span className="text-primary dark:text-blue-400">Category</span>
           </h2>
           <div className="flex flex-wrap justify-center gap-3">
             {categories.map((category) => (
               <button
                 key={category}
-                className="bg-white text-text-gray border border-gray-300 px-5 py-2 rounded-full font-body font-medium hover:border-primary hover:text-primary hover:bg-primary/5 transition-colors"
+                className="bg-white dark:bg-gray-800 text-text-gray dark:text-gray-300 border border-gray-300 dark:border-gray-600 px-5 py-2 rounded-full font-body font-medium hover:border-primary dark:hover:border-blue-400 hover:text-primary dark:hover:text-blue-400 hover:bg-primary/5 dark:hover:bg-blue-400/10 transition-colors"
               >
                 {category}
               </button>
@@ -343,8 +343,8 @@ const Skills = () => {
         
         {/* Skills Grid - All Skills */}
         <div className="mb-16">
-          <h2 className="text-2xl font-heading font-bold text-darkbg mb-8 text-center">
-            All <span className="text-primary">Skills</span>
+          <h2 className="text-2xl font-heading font-bold text-darkbg dark:text-white mb-8 text-center">
+            All <span className="text-primary dark:text-blue-400">Skills</span>
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
             {skills.map((skill) => (
@@ -357,8 +357,8 @@ const Skills = () => {
         {categories.map((category) => (
           skillsByCategory[category] && (
             <div key={category} className="mb-16">
-              <h2 className="text-2xl font-heading font-bold text-darkbg mb-8 text-center">
-                {category} <span className="text-primary">Skills</span>
+              <h2 className="text-2xl font-heading font-bold text-darkbg dark:text-white mb-8 text-center">
+                {category} <span className="text-primary dark:text-blue-400">Skills</span>
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
                 {skillsByCategory[category].map((skill) => (
@@ -370,23 +370,23 @@ const Skills = () => {
         ))}
         
         {/* Learning Journey */}
-        <div className="mt-20 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-8 md:p-12">
-          <h2 className="text-3xl font-heading font-bold text-darkbg mb-6 text-center">
-            My <span className="text-primary">Learning</span> Philosophy
+        <div className="mt-20 bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 md:p-12">
+          <h2 className="text-3xl font-heading font-bold text-darkbg dark:text-white mb-6 text-center">
+            My <span className="text-primary dark:text-blue-400">Learning</span> Philosophy
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-sm">
-              <div className="text-primary text-3xl mb-4">📚</div>
-              <h3 className="text-xl font-heading font-bold text-darkbg mb-4">Continuous Learning</h3>
-              <p className="text-text-gray font-body">
+            <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm">
+              <div className="text-primary dark:text-blue-400 text-3xl mb-4">📚</div>
+              <h3 className="text-xl font-heading font-bold text-darkbg dark:text-white mb-4">Continuous Learning</h3>
+              <p className="text-text-gray dark:text-gray-300 font-body">
                 I dedicate time each week to learn new technologies, follow industry trends, 
                 and improve my existing skills through courses, tutorials, and hands-on projects.
               </p>
             </div>
-            <div className="bg-white p-8 rounded-xl shadow-sm">
-              <div className="text-primary text-3xl mb-4">🚀</div>
-              <h3 className="text-xl font-heading font-bold text-darkbg mb-4">Practical Application</h3>
-              <p className="text-text-gray font-body">
+            <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm">
+              <div className="text-primary dark:text-blue-400 text-3xl mb-4">🚀</div>
+              <h3 className="text-xl font-heading font-bold text-darkbg dark:text-white mb-4">Practical Application</h3>
+              <p className="text-text-gray dark:text-gray-300 font-body">
                 I believe in learning by doing. Each new skill is immediately applied 
                 to real projects, ensuring deep understanding and practical experience.
               </p>
@@ -396,10 +396,10 @@ const Skills = () => {
         
         {/* CTA Section */}
         <div className="mt-20 text-center">
-          <h2 className="text-3xl font-heading font-bold text-darkbg mb-6">
+          <h2 className="text-3xl font-heading font-bold text-darkbg dark:text-white mb-6">
             Need a specific skill?
           </h2>
-          <p className="text-lg text-text-gray font-body max-w-2xl mx-auto mb-8">
+          <p className="text-lg text-text-gray dark:text-gray-300 font-body max-w-2xl mx-auto mb-8">
             If you're looking for expertise in a particular technology not listed here, 
             I'm a quick learner and ready to adapt to your project's needs.
           </p>
