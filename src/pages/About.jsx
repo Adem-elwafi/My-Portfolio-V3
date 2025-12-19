@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 // Import your image with the correct path
-import profileImage from '../assets/MyImage.png';
+import profileImage from '../assets/adem.png';
 
 const ProfileImage = () => (
   <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto">
