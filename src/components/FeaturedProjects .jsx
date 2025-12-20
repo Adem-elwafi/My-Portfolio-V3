@@ -13,7 +13,7 @@ const FeaturedProjects = ({ projects = [] }) => {
 
   // Default projects if none provided
   const defaultProjects = [
-    { id: 1, title: 'E-commerce Platform', category: 'Web App', image: 'https://picsum.photos/600/800?random=1' },
+    { id: 1, title: 'Games Downloader Platform', category: 'Web App', image: 'src/assets/GamesDownloader.png' },
     { id: 2, title: 'Task Management', category: 'Productivity', image: 'https://picsum.photos/600/800?random=2' },
     { id: 3, title: 'Fitness Tracker', category: 'Health & Wellness', image: 'https://picsum.photos/600/800?random=3' },
     { id: 4, title: 'Social Media Dashboard', category: 'Analytics', image: 'https://picsum.photos/600/800?random=4' },

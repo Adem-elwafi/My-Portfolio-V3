@@ -1,54 +1,62 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
-import FeaturedProjects from '../components/FeaturedProjects '
-import Hero from '../components/Hero';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+
 const FeaturedSkills = () => {
-
   // Create refs for animation elements
-
   const skillsHeadingRef = useRef(null);
   const skillsGridRef = useRef(null);
   const viewSkillsRef = useRef(null);
+  const sectionRef = useRef(null);
 
-   useEffect(() => {
-    // Create GSAP timeline with faster settings
-    const tl = gsap.timeline({ defaults: { ease: "power2.out", duration: 0.6 } });
+  useEffect(() => {
+    // Create GSAP timeline triggered by scroll
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%", // Start when top of element is 80% from top of viewport
+        end: "bottom 20%", // End when bottom reaches 20% from top
+        toggleActions: "play none none reverse", // Play forward on enter, reverse on leave
+        markers: false, // Set to true for debugging
+      }
+    });
 
-
-    // Skills section animations (very short delay)
+    // Skills section animations
     tl.fromTo(skillsHeadingRef.current,
-      { opacity: 0, y: -20 },
-      { opacity: 1, y: 0, duration: 0.5 },
-      1.2
+      { opacity: 0, y: -30 },
+      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
     );
 
-    // Animate skills grid items with faster stagger
+    // Animate skills grid items
     tl.fromTo(skillsGridRef.current.children,
-      { opacity: 0, y: 15 },
+      { opacity: 0, y: 20, scale: 0.95 },
       { 
         opacity: 1, 
         y: 0, 
-        duration: 0.4,
-        stagger: 0.03, // faster stagger
-        ease: "power2.out"
+        scale: 1,
+        duration: 0.5,
+        stagger: 0.05,
+        ease: "back.out(1.2)"
       },
-      1.4
+      "-=0.3" // Start 0.3 seconds before previous animation ends
     );
 
-    // View skills link: quick fade
+    // View skills link
     tl.fromTo(viewSkillsRef.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 0.3 },
-      1.6
+      { opacity: 0, x: -20 },
+      { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" },
+      "-=0.2"
     );
 
-    // Clean up animations
+    // Clean up on unmount
     return () => {
-      tl.kill();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
-
 
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-800 transition-colors duration-300">
