@@ -1,54 +1,12 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
-import { 
-  FaReact, 
-  FaNodeJs, 
-  FaJs, 
-  FaHtml5, 
-  FaCss3Alt, 
-  FaPython, 
-  FaDatabase,
-  FaGitAlt,
-  FaDocker
-} from 'react-icons/fa';
-import { 
-  SiTypescript, 
-  SiTailwindcss, 
-  SiMongodb, 
-  SiExpress, 
-  SiNextdotjs, 
-  SiGraphql,
-  SiRedux,
-  SiPostgresql,
-  SiFirebase,
-} from 'react-icons/si';
 import personalImage from '../assets/adem-standing.png';
-
-// Tech icons data
-const TECH_ICONS = [
-  { Component: FaReact, color: '#61DAFB', name: 'React', size: 24 },
-  { Component: FaNodeJs, color: '#339933', name: 'Node.js', size: 24 },
-  { Component: FaJs, color: '#F7DF1E', name: 'JavaScript', size: 24 },
-  { Component: SiTypescript, color: '#3178C6', name: 'TypeScript', size: 22 },
-  { Component: SiNextdotjs, color: '#000000', name: 'Next.js', size: 24 },
-  { Component: FaHtml5, color: '#E34F26', name: 'HTML5', size: 24 },
-  { Component: FaCss3Alt, color: '#1572B6', name: 'CSS3', size: 24 },
-  { Component: SiTailwindcss, color: '#06B6D4', name: 'Tailwind', size: 24 },
-  { Component: SiExpress, color: '#000000', name: 'Express', size: 24 },
-  { Component: SiMongodb, color: '#47A248', name: 'MongoDB', size: 22 },
-  { Component: FaPython, color: '#3776AB', name: 'Python', size: 24 },
-  { Component: FaDatabase, color: '#4479A1', name: 'SQL', size: 24 },
-  { Component: SiGraphql, color: '#E10098', name: 'GraphQL', size: 22 },
-  { Component: SiRedux, color: '#764ABC', name: 'Redux', size: 22 },
-  { Component: SiPostgresql, color: '#4169E1', name: 'PostgreSQL', size: 22 },
-  { Component: FaGitAlt, color: '#F05032', name: 'Git', size: 22 },
-  { Component: SiFirebase, color: '#FFCA28', name: 'Firebase', size: 22 },
-  { Component: FaDocker, color: '#2496ED', name: 'Docker', size: 24 },
-  ];
+import LiquidEther from './backgrounds/LiquidEther';
 
 const Hero = () => {
   // Refs for main animations
+  const heroContentRef = useRef(null); // NEW: Single ref for all GSAP-controlled content
   const welcomeBadgeRef = useRef(null);
   const nameRef = useRef(null);
   const titleRef = useRef(null);
@@ -57,126 +15,14 @@ const Hero = () => {
   const ctaButtonsRef = useRef(null);
   const imageContainerRef = useRef(null);
   const imageRef = useRef(null);
-  
-  // Refs for cursor effects
-  const cursorRef = useRef(null);
-  const particlesContainerRef = useRef(null);
-  const heroContainerRef = useRef(null);
-  
-  // State
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-  const [particles, setParticles] = useState([]);
-
-  // ===== CURSOR TECH ICONS EFFECT =====
-  const createTechParticle = useCallback((x, y) => {
-    const randomTech = TECH_ICONS[Math.floor(Math.random() * TECH_ICONS.length)];
-    const id = Date.now() + Math.random();
-    
-    const particle = {
-      id,
-      x,
-      y,
-      tech: randomTech,
-      rotation: Math.random() * 360,
-      scale: Math.random() * 0.5 + 0.8,
-      velocity: {
-        x: (Math.random() - 0.5) * 4,
-        y: Math.random() * 3 + 2,
-      },
-      opacity: 1,
-      createdAt: Date.now(),
-    };
-    
-    setParticles(prev => [...prev.slice(-15), particle]); // Keep only last 15 particles
-    
-    // Auto remove after animation
-    setTimeout(() => {
-      setParticles(prev => prev.filter(p => p.id !== id));
-    }, 1500);
-  }, []);
-const handleMouseMove = (e) => {
-  const { clientX: x, clientY: y } = e;
-  
-  // Update cursor position
-  setCursorPosition({ x, y });
-  
-  // Occasionally create tech particles
-  if (isHovering && Math.random() > 0.8) {
-    // Get the centered position (account for -50% transform)
-    const particleX = x;
-    const particleY = y;
-    createTechParticle(particleX, particleY);
-  }
-};
-  // Mouse move handler
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const { clientX: x, clientY: y } = e;
-      
-      // Update cursor position
-      setCursorPosition({ x, y });
-      
-      // Update custom cursor
-      if (cursorRef.current) {
-        gsap.to(cursorRef.current, {
-          x: x,
-          y: y,
-          duration: 0.1,
-          ease: "power2.out"
-        });
-      }
-      
-      // Occasionally create tech particles (20% chance per move)
-      if (isHovering && Math.random() > 0.8) {
-        createTechParticle(x, y);
-      }
-    };
-    
-    const handleMouseEnter = () => setIsHovering(true);
-    const handleMouseLeave = () => setIsHovering(false);
-    
-    const container = heroContainerRef.current;
-    if (container) {
-      container.addEventListener('mousemove', handleMouseMove);
-      container.addEventListener('mouseenter', handleMouseEnter);
-      container.addEventListener('mouseleave', handleMouseLeave);
-    }
-    
-    // Hide default cursor
-    document.body.style.cursor = 'none';
-    
-    return () => {
-      if (container) {
-        container.removeEventListener('mousemove', handleMouseMove);
-        container.removeEventListener('mouseenter', handleMouseEnter);
-        container.removeEventListener('mouseleave', handleMouseLeave);
-      }
-      document.body.style.cursor = 'default';
-    };
-  }, [isHovering, createTechParticle]);
-
-  // Animate particles
-  useEffect(() => {
-    const updateParticles = () => {
-      setParticles(prev => 
-        prev.map(particle => ({
-          ...particle,
-          x: particle.x + particle.velocity.x,
-          y: particle.y + particle.velocity.y,
-          rotation: particle.rotation + particle.velocity.x,
-          opacity: Math.max(0, particle.opacity - 0.01),
-        })).filter(p => p.opacity > 0 && p.y < window.innerHeight + 100)
-      );
-    };
-    
-    const interval = setInterval(updateParticles, 16); // ~60fps
-    return () => clearInterval(interval);
-  }, []);
 
   // ===== MAIN HERO ANIMATIONS =====
-  useEffect(() => {
+  useLayoutEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+
+    // CRITICAL FIX: Instantly reveal the hero content wrapper at the start
+    // This prevents the flash - the content becomes visible immediately, then animates
+    tl.set(heroContentRef.current, { opacity: 1 });
 
     // Image emerges from "hole"
     tl.fromTo(imageContainerRef.current,
@@ -259,70 +105,37 @@ const handleMouseMove = (e) => {
   }, []);
 
   return (
-    <div 
-      ref={heroContainerRef}
-      className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 dark:bg-gray-900 overflow-hidden relative"
-    >
-      {/* ===== CURSOR TECH ICONS EFFECT ===== */}
-      
-    {/* Custom cursor */}
-    <div 
-      ref={cursorRef}
-      className="fixed w-8 h-8 pointer-events-none z-50"
-      style={{
-        left: `${cursorPosition.x}px`,
-        top: `${cursorPosition.y}px`,
-        transform: 'translate(-50%, -50%)' // This centers the cursor
-      }}
-    >
-      <div className="w-full h-full rounded-full bg-primary/20 border-2 border-primary/50 backdrop-blur-sm"></div>
-      <div className="absolute top-1/2 left-1/2 w-2 h-2 rounded-full bg-primary transform -translate-x-1/2 -translate-y-1/2"></div>
-    </div>
-      
-      {/* Tech icons particles */}
-      <div className="fixed inset-0 pointer-events-none z-40 overflow-hidden">
-        {particles.map(particle => {
-          const { Component, color, size } = particle.tech;
-          return (
-            <div
-              key={particle.id}
-              className="absolute flex flex-col items-center pointer-events-none"
-              style={{
-                left: particle.x,
-                top: particle.y,
-                transform: `translate(-50%, -50%) rotate(${particle.rotation}deg) scale(${particle.scale})`,
-                opacity: particle.opacity,
-              }}
-            >
-              <Component 
-                style={{ 
-                  color: color,
-                  fontSize: size,
-                  filter: `drop-shadow(0 2px 4px rgba(0,0,0,0.3))`
-                }} 
-              />
-              <span 
-                className="text-xs font-semibold mt-1 px-2 py-1 rounded-md"
-                style={{ 
-                  backgroundColor: `${color}20`,
-                  color: color,
-                  backdropFilter: 'blur(4px)'
-                }}
-              >
-                {particle.tech.name}
-              </span>
-            </div>
-          );
-        })}
+    <div className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 overflow-hidden relative">
+      {/* FIXED: Background moved outside and positioned absolutely */}
+      {/* This ensures it's always visible and never controlled by GSAP */}
+      <div className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
+        <LiquidEther
+          colors={['#5227FF', '#FF9FFC', '#B19EEF']}
+          mouseForce={20}
+          cursorSize={100}
+          isViscous={false}
+          viscous={30}
+          iterationsViscous={32}
+          iterationsPoisson={32}
+          resolution={0.5}
+          isBounce={false}
+          autoDemo={true}
+          autoSpeed={0.5}
+          autoIntensity={2.2}
+          takeoverDuration={0.25}
+          autoResumeDelay={3000}
+          autoRampDuration={0.6}
+          style={{ width: '100%', height: '100%' }}
+        />
       </div>
 
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/5 rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="relative w-full max-w-7xl mx-auto z-10">
+      {/* FIXED: All Hero content wrapped in heroContentRef with initial opacity: 0 */}
+      {/* CSS sets opacity: 0, GSAP instantly reveals it, then runs animations */}
+      <div 
+        ref={heroContentRef} 
+        className="relative w-full max-w-7xl mx-auto"
+        style={{ opacity: 0, zIndex: 10 }}
+      >
         {/* Two-column layout */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
           {/* Left Column: Text Content */}
@@ -445,9 +258,10 @@ const handleMouseMove = (e) => {
           </div>
         </div>
       </div>
+      {/* End of heroContentRef wrapper */}
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2" style={{ zIndex: 10 }}>
         <div className="flex flex-col items-center">
           <span className="text-sm text-primary dark:text-blue-400 mb-2 font-body">Scroll to explore</span>
           <div className="w-6 h-10 border-2 border-primary dark:border-blue-400 rounded-full flex justify-center">

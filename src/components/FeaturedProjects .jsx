@@ -14,11 +14,11 @@ const FeaturedProjects = ({ projects = [] }) => {
   // Default projects if none provided
   const defaultProjects = [
     { id: 1, title: 'Games Downloader Platform', category: 'Web App', image: 'src/assets/GamesDownloader.png' },
-    { id: 2, title: 'Task Management', category: 'Productivity', image: 'https://picsum.photos/600/800?random=2' },
-    { id: 3, title: 'Fitness Tracker', category: 'Health & Wellness', image: 'https://picsum.photos/600/800?random=3' },
-    { id: 4, title: 'Social Media Dashboard', category: 'Analytics', image: 'https://picsum.photos/600/800?random=4' },
-    { id: 5, title: 'Travel Booking', category: 'Travel', image: 'https://picsum.photos/600/800?random=5' },
-    { id: 6, title: 'Portfolio Website', category: 'Design', image: 'https://picsum.photos/600/800?random=6' },
+    { id: 2, title: 'AI language coach', category: 'Productivity', image: 'src/assets/ai-language-coach.png' },
+    { id: 3, title: 'Fitness Tracker', category: 'Health & Wellness', image: 'src/assets/GamesDownloader.png' },
+    { id: 4, title: 'Social Media Dashboard', category: 'Analytics', image: 'src/assets/GamesDownloader.png' },
+    { id: 5, title: 'Travel Booking', category: 'Travel', image: 'src/assets/GamesDownloader.png' },
+    { id: 6, title: 'Portfolio Website', category: 'Design', image: 'src/assets/GamesDownloader.png' },
   ];
 
   const projectList = projects.length > 0 ? projects : defaultProjects;
@@ -83,14 +83,13 @@ const FeaturedProjects = ({ projects = [] }) => {
               key={project.id || index}
               className="flex-shrink-0 w-[300px] md:w-[400px] group"
             >
-              <div className="relative overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800 aspect-[3/4] mb-4">
+              <div className="relative overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800 aspect-[16/9] mb-4">
                 <img 
                   src={project.image} 
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               
               <div>
