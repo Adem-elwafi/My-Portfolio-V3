@@ -2,23 +2,25 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import { InertiaPlugin } from "gsap/InertiaPlugin";
+import { useLanguage } from '../context/LanguageContext';
 gsap.registerPlugin(Draggable, InertiaPlugin); // ✅ Register BOTH
 
 // Register GSAP plugins
 gsap.registerPlugin(Draggable);
 
 const FeaturedProjects = ({ projects = [] }) => {
+  const { t } = useLanguage();
   const listRef = useRef(null);
   const draggableRef = useRef(null);
 
   // Default projects if none provided
   const defaultProjects = [
-    { id: 1, title: 'Games Downloader Platform', category: 'Web App', image: 'src/assets/GamesDownloader.png' },
-    { id: 2, title: 'AI language coach', category: 'Productivity', image: 'src/assets/ai-language-coach.png' },
-    { id: 3, title: 'Fitness Tracker', category: 'Health & Wellness', image: 'src/assets/GamesDownloader.png' },
-    { id: 4, title: 'Social Media Dashboard', category: 'Analytics', image: 'src/assets/GamesDownloader.png' },
-    { id: 5, title: 'Travel Booking', category: 'Travel', image: 'src/assets/GamesDownloader.png' },
-    { id: 6, title: 'Portfolio Website', category: 'Design', image: 'src/assets/GamesDownloader.png' },
+    { id: 1, titleKey: 'projects.cards.ecommerce.title', categoryKey: 'projects.cards.ecommerce.category', image: 'src/assets/GamesDownloader.png' },
+    { id: 2, titleKey: 'projects.cards.task.title', categoryKey: 'projects.cards.task.category', image: 'src/assets/ai-language-coach.png' },
+    { id: 3, titleKey: 'projects.cards.fitness.title', categoryKey: 'projects.cards.fitness.category', image: 'src/assets/GamesDownloader.png' },
+    { id: 4, titleKey: 'projects.cards.weather.title', categoryKey: 'projects.cards.weather.category', image: 'src/assets/GamesDownloader.png' },
+    { id: 5, titleKey: 'projects.cards.chat.title', categoryKey: 'projects.cards.chat.category', image: 'src/assets/GamesDownloader.png' },
+    { id: 6, titleKey: 'projects.cards.portfolio.title', categoryKey: 'projects.cards.portfolio.category', image: 'src/assets/GamesDownloader.png' },
   ];
 
   const projectList = projects.length > 0 ? projects : defaultProjects;
@@ -60,9 +62,9 @@ const FeaturedProjects = ({ projects = [] }) => {
   return (
     <section className="py-16 px-4 max-w-7xl mx-auto">
       <div className="mb-12">
-        <h2 className="text-4xl md:text-5xl font-light mb-4">Featured Projects</h2>
+        <h2 className="text-4xl md:text-5xl font-light mb-4">{t('featuredProjects.title')}</h2>
         <p className="text-gray-600 dark:text-gray-300 max-w-2xl">
-          A selection of my recent work showcasing interface design, interactivity, and modern web development practices.
+          {t('featuredProjects.description')}
         </p>
       </div>
 
@@ -94,14 +96,14 @@ const FeaturedProjects = ({ projects = [] }) => {
               
               <div>
                 <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-                  {project.category}
+                  {project.categoryKey ? t(project.categoryKey) : project.category}
                 </span>
                 <h3 className="text-xl font-medium mt-1 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">
-                  {project.title}
+                  {project.titleKey ? t(project.titleKey) : project.title}
                 </h3>
-                {project.description && (
+                {(project.descriptionKey || project.description) && (
                   <p className="text-gray-600 dark:text-gray-300 mt-2 text-sm">
-                    {project.description}
+                    {project.descriptionKey ? t(project.descriptionKey) : project.description}
                   </p>
                 )}
               </div>
@@ -112,7 +114,7 @@ const FeaturedProjects = ({ projects = [] }) => {
         {/* Scroll hint */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
           <div className="flex items-center space-x-2 text-gray-400">
-            <span className="text-sm">Drag to scroll</span>
+            <span className="text-sm">{t('featuredProjects.dragHint')}</span>
             <svg className="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import FeaturedProjects from '../components/FeaturedProjects '
 import Hero from '../components/Hero';
 import FeaturedSkills from '../components/FeaturedSkills';

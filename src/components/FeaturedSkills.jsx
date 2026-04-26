@@ -2,11 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLanguage } from '../context/LanguageContext';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const FeaturedSkills = () => {
+  const { t } = useLanguage();
   // Create refs for animation elements
   const skillsHeadingRef = useRef(null);
   const skillsGridRef = useRef(null);
@@ -64,7 +66,7 @@ const FeaturedSkills = () => {
       
         <div className="max-w-6xl mx-auto">
           <h3 ref={skillsHeadingRef} className="text-3xl font-heading font-bold text-darkbg dark:text-white text-center mb-12">
-            Technologies I Work With
+            {t('featuredSkills.title')}
           </h3>
           
           <div ref={skillsGridRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
@@ -85,7 +87,7 @@ const FeaturedSkills = () => {
               to="/skills"
               className="text-primary dark:text-blue-400 font-body font-semibold hover:text-secondary dark:hover:text-purple-400 transition-colors duration-300 inline-flex items-center"
             >
-              View all skills
+              {t('featuredSkills.viewAll')}
               <svg 
                 className="w-4 h-4 ml-1" 
                 fill="none" 

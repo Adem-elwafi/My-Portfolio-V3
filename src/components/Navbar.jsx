@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import { useLanguage } from '../context/LanguageContext';
 import { FaSun, FaMoon } from 'react-icons/fa';
-import FeaturedProjects from './FeaturedProjects ';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const { isDarkMode, toggleTheme } = useTheme();
+  const { language, setLanguage, languageOptions, t } = useLanguage();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -17,11 +18,11 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/skills', label: 'Skills' },
-    { path: '/contact', label: 'Contact' },
+    { path: '/', label: t('nav.home') },
+    { path: '/about', label: t('nav.about') },
+    { path: '/projects', label: t('nav.projects') },
+    { path: '/skills', label: t('nav.skills') },
+    { path: '/contact', label: t('nav.contact') },
   ];
 
   const isActiveLink = (path) => {
@@ -58,6 +59,23 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+
+            <label className="sr-only" htmlFor="language-select-desktop">
+              {t('nav.language')}
+            </label>
+            <select
+              id="language-select-desktop"
+              value={language}
+              onChange={(event) => setLanguage(event.target.value)}
+              className="bg-gray-800 text-white border border-gray-700 rounded-full px-3 py-2 text-sm font-body focus:outline-none focus:ring-2 focus:ring-primary"
+              aria-label={t('nav.language')}
+            >
+              {languageOptions.map((option) => (
+                <option key={option.code} value={option.code}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
             
             {/* Theme Toggle Button */}
             <button
@@ -112,6 +130,22 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-darkbg border-t border-gray-700">
             <div className="px-2 pt-2 pb-3 space-y-1">
+              <label className="sr-only" htmlFor="language-select-mobile">
+                {t('nav.language')}
+              </label>
+              <select
+                id="language-select-mobile"
+                value={language}
+                onChange={(event) => setLanguage(event.target.value)}
+                className="w-full bg-gray-800 text-white border border-gray-700 rounded-lg px-3 py-2 text-sm font-body mb-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                aria-label={t('nav.language')}
+              >
+                {languageOptions.map((option) => (
+                  <option key={option.code} value={option.code}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
               {navLinks.map((link) => (
                 <Link
                   key={link.path}

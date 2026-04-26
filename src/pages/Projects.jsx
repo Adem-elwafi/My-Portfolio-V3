@@ -1,10 +1,11 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 // Import project images - you'll need to add these to src/assets/
 // Using placeholder images for now
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, t, demoLabel, codeLabel }) => {
   return (
     <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-card overflow-hidden hover:scale-105 transition-transform duration-300 group border border-gray-100 dark:border-gray-700">
       {/* Project Image */}
@@ -16,24 +17,24 @@ const ProjectCard = ({ project }) => {
         </div>
         <div className="absolute top-4 right-4">
           <span className="bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">
-            {project.category}
+            {project.categoryKey ? t(project.categoryKey) : project.category}
           </span>
         </div>
       </div>
-      
+
       {/* Project Content */}
       <div className="pt-6">
         <h3 className="text-xl font-heading font-bold text-darkbg dark:text-white mb-3 group-hover:text-primary dark:group-hover:text-blue-400 transition-colors">
-          {project.title}
+          {project.titleKey ? t(project.titleKey) : project.title}
         </h3>
         <p className="text-text-gray dark:text-gray-300 font-body leading-relaxed mb-4">
-          {project.description}
+          {project.descriptionKey ? t(project.descriptionKey) : project.description}
         </p>
-        
+
         {/* Tech Stack */}
         <div className="flex flex-wrap gap-2 mb-6">
           {project.technologies.map((tech, index) => (
-            <span 
+            <span
               key={index}
               className="bg-background dark:bg-gray-700 text-text-gray dark:text-gray-200 text-xs font-medium px-3 py-1 rounded-full border border-gray-200 dark:border-gray-600"
             >
@@ -41,7 +42,7 @@ const ProjectCard = ({ project }) => {
             </span>
           ))}
         </div>
-        
+
         {/* Action Buttons */}
         <div className="flex gap-3">
           <a
@@ -50,7 +51,7 @@ const ProjectCard = ({ project }) => {
             rel="noopener noreferrer"
             className="flex-1 bg-primary hover:bg-secondary rounded-md px-4 py-3 font-body font-semibold text-center transition-all duration-300 hover:scale-[1.02] shadow hover:shadow-md text-white"
           >
-            Live Demo
+            {demoLabel}
           </a>
           <a
             href={project.codeLink}
@@ -58,7 +59,7 @@ const ProjectCard = ({ project }) => {
             rel="noopener noreferrer"
             className="flex-1 border-2 border-primary dark:border-blue-400 text-primary dark:text-blue-400 hover:bg-primary dark:hover:bg-blue-400 hover:text-white rounded-md px-4 py-3 font-body font-semibold text-center transition-all duration-300 hover:scale-[1.02]"
           >
-            View Code
+            {codeLabel}
           </a>
         </div>
       </div>
@@ -67,63 +68,76 @@ const ProjectCard = ({ project }) => {
 };
 
 const Projects = () => {
+  const { language, t } = useLanguage();
+  const demoLabelMap = {
+    en: 'Live Demo',
+    fr: 'Démo en direct',
+    ar: 'عرض مباشر',
+  };
+  const codeLabelMap = {
+    en: 'View Code',
+    fr: 'Voir le code',
+    ar: 'عرض الشيفرة',
+  };
+  const demoLabel = demoLabelMap[language] || 'Live Demo';
+  const codeLabel = codeLabelMap[language] || 'View Code';
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      description: 'A full-featured online store with shopping cart, user authentication, and payment integration. Built with modern e-commerce best practices.',
+      titleKey: 'projects.cards.ecommerce.title',
+      descriptionKey: 'projects.cards.ecommerce.description',
       technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redux'],
-      category: 'Full Stack',
+      categoryKey: 'projects.cards.ecommerce.category',
       demoLink: 'https://demo.example.com',
       codeLink: 'https://github.com/username/ecommerce',
       icon: '🛒'
     },
     {
       id: 2,
-      title: 'Task Management App',
-      description: 'Collaborative task manager with real-time updates, team management, and progress tracking. Features drag-and-drop interface.',
+      titleKey: 'projects.cards.task.title',
+      descriptionKey: 'projects.cards.task.description',
       technologies: ['React', 'Firebase', 'Tailwind', 'Context API', 'WebSockets'],
-      category: 'Web App',
+      categoryKey: 'projects.cards.task.category',
       demoLink: 'https://taskdemo.example.com',
       codeLink: 'https://github.com/username/taskmanager',
       icon: '✅'
     },
     {
       id: 3,
-      title: 'Weather Dashboard',
-      description: 'Real-time weather application with location-based forecasts, charts, and notifications. Includes multi-day forecasts and severe weather alerts.',
+      titleKey: 'projects.cards.weather.title',
+      descriptionKey: 'projects.cards.weather.description',
       technologies: ['React', 'OpenWeather API', 'Chart.js', 'Geolocation', 'PWA'],
-      category: 'API Integration',
+      categoryKey: 'projects.cards.weather.category',
       demoLink: 'https://weatherdemo.example.com',
       codeLink: 'https://github.com/username/weather-app',
       icon: '🌤️'
     },
     {
       id: 4,
-      title: 'Portfolio Website',
-      description: 'Modern responsive portfolio website with dark/light mode, project showcase, and contact form. Built with performance optimization.',
+      titleKey: 'projects.cards.portfolio.title',
+      descriptionKey: 'projects.cards.portfolio.description',
       technologies: ['React', 'Tailwind', 'Framer Motion', 'EmailJS', 'Vite'],
-      category: 'Personal',
+      categoryKey: 'projects.cards.portfolio.category',
       demoLink: '/',
       codeLink: 'https://github.com/username/portfolio',
       icon: '💼'
     },
     {
       id: 5,
-      title: 'Chat Application',
-      description: 'Real-time chat application with private rooms, file sharing, and video calling capabilities. Features end-to-end encryption.',
+      titleKey: 'projects.cards.chat.title',
+      descriptionKey: 'projects.cards.chat.description',
       technologies: ['Socket.io', 'Express', 'React', 'WebRTC', 'PostgreSQL'],
-      category: 'Real-time',
+      categoryKey: 'projects.cards.chat.category',
       demoLink: 'https://chatdemo.example.com',
       codeLink: 'https://github.com/username/chat-app',
       icon: '💬'
     },
     {
       id: 6,
-      title: 'Fitness Tracker',
-      description: 'Comprehensive fitness tracking application with workout plans, nutrition logging, and progress analytics. Integrates with wearables.',
+      titleKey: 'projects.cards.fitness.title',
+      descriptionKey: 'projects.cards.fitness.description',
       technologies: ['React Native', 'GraphQL', 'MongoDB', 'JWT', 'Chart.js'],
-      category: 'Mobile',
+      categoryKey: 'projects.cards.fitness.category',
       demoLink: 'https://fitnessdemo.example.com',
       codeLink: 'https://github.com/username/fitness-tracker',
       icon: '🏋️'
@@ -137,27 +151,26 @@ const Projects = () => {
         {/* Page Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-darkbg dark:text-white mb-6">
-            My <span className="text-primary dark:text-blue-400">Projects</span>
+            {t('projects.titleLead')} <span className="text-primary dark:text-blue-400">{t('projects.titleHighlight')}</span>
           </h1>
           <div className="w-24 h-1 bg-primary dark:bg-blue-400 mx-auto mb-6"></div>
           <p className="text-lg text-text-gray dark:text-gray-300 font-body max-w-2xl mx-auto mb-8">
-            Here are some of my recent projects. Each represents a unique challenge 
-            and an opportunity to solve real-world problems with code.
+            {t('projects.subtitle')}
           </p>
           
           {/* Filter Buttons */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             <button className="bg-primary hover:bg-secondary text-white px-5 py-2 rounded-full font-body font-medium transition-colors">
-              All Projects
+              {t('projects.filters.all')}
             </button>
             <button className="bg-white dark:bg-gray-800 text-text-gray dark:text-gray-300 border border-gray-300 dark:border-gray-600 px-5 py-2 rounded-full font-body font-medium hover:border-primary dark:hover:border-blue-400 hover:text-primary dark:hover:text-blue-400 transition-colors">
-              Full Stack
+              {t('projects.filters.fullStack')}
             </button>
             <button className="bg-white dark:bg-gray-800 text-text-gray dark:text-gray-300 border border-gray-300 dark:border-gray-600 px-5 py-2 rounded-full font-body font-medium hover:border-primary dark:hover:border-blue-400 hover:text-primary dark:hover:text-blue-400 transition-colors">
-              Frontend
+              {t('projects.filters.frontend')}
             </button>
             <button className="bg-white dark:bg-gray-800 text-text-gray dark:text-gray-300 border border-gray-300 dark:border-gray-600 px-5 py-2 rounded-full font-body font-medium hover:border-primary dark:hover:border-blue-400 hover:text-primary dark:hover:text-blue-400 transition-colors">
-              Mobile
+              {t('projects.filters.mobile')}
             </button>
           </div>
         </div>
@@ -165,7 +178,7 @@ const Projects = () => {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <ProjectCard key={project.id} project={project} t={t} demoLabel={demoLabel} codeLabel={codeLabel} />
           ))}
         </div>
         
@@ -174,19 +187,19 @@ const Projects = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
               <div className="text-3xl md:text-4xl font-heading font-bold text-primary dark:text-blue-400 mb-2">20+</div>
-              <div className="text-text-gray dark:text-gray-300 font-body">Projects Completed</div>
+              <div className="text-text-gray dark:text-gray-300 font-body">{t('projects.stats.completed')}</div>
             </div>
             <div>
               <div className="text-3xl md:text-4xl font-heading font-bold text-primary dark:text-blue-400 mb-2">15+</div>
-              <div className="text-text-gray dark:text-gray-300 font-body">Happy Clients</div>
+              <div className="text-text-gray dark:text-gray-300 font-body">{t('projects.stats.clients')}</div>
             </div>
             <div>
               <div className="text-3xl md:text-4xl font-heading font-bold text-primary dark:text-blue-400 mb-2">5+</div>
-              <div className="text-text-gray dark:text-gray-300 font-body">Years Experience</div>
+              <div className="text-text-gray dark:text-gray-300 font-body">{t('projects.stats.experience')}</div>
             </div>
             <div>
               <div className="text-3xl md:text-4xl font-heading font-bold text-primary dark:text-blue-400 mb-2">100%</div>
-              <div className="text-text-gray dark:text-gray-300 font-body">Satisfaction Rate</div>
+              <div className="text-text-gray dark:text-gray-300 font-body">{t('projects.stats.satisfaction')}</div>
             </div>
           </div>
         </div>
@@ -194,17 +207,16 @@ const Projects = () => {
         {/* CTA Section */}
         <div className="mt-20 text-center">
           <h2 className="text-3xl font-heading font-bold text-darkbg dark:text-white mb-6">
-            Have a project in mind?
+            {t('projects.ctaTitle')}
           </h2>
           <p className="text-lg text-text-gray dark:text-gray-300 font-body max-w-2xl mx-auto mb-8">
-            I'm always open to discussing new opportunities and interesting projects.
-            Let's build something amazing together!
+            {t('projects.ctaDescription')}
           </p>
           <Link
             to="/contact"
             className="inline-flex items-center bg-primary text-white px-8 py-4 rounded-lg font-body font-semibold text-lg hover:bg-secondary transition-all duration-300 hover:scale-105 shadow-lg"
           >
-            Start a Project
+            {t('projects.ctaButton')}
             <svg 
               className="w-5 h-5 ml-2" 
               fill="none" 

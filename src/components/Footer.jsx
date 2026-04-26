@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
   
   const quickLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/skills', label: 'Skills' },
-    { path: '/contact', label: 'Contact' },
+    { path: '/', label: t('nav.home') },
+    { path: '/about', label: t('nav.about') },
+    { path: '/projects', label: t('nav.projects') },
+    { path: '/skills', label: t('nav.skills') },
+    { path: '/contact', label: t('nav.contact') },
   ];
 
   const socialLinks = [
@@ -45,19 +47,19 @@ const Footer = () => {
               Portfolio
             </Link>
             <p className="mt-2 font-body text-gray-300 dark:text-gray-400">
-              Full Stack Developer & Problem Solver
+              {t('footer.role')}
             </p>
             <p className="mt-4 text-sm text-gray-400 font-body">
-              © {currentYear} Adem Elwafi. All rights reserved.
+              {t('footer.copyright', { year: currentYear })}
             </p>
             <p className="mt-2 text-sm text-gray-400 font-body flex items-center justify-center lg:justify-start">
-              Made with <FaHeart className="text-red-500 mx-1" /> using React & Tailwind CSS
+              {t('footer.madeWith')} <FaHeart className="text-red-500 mx-1" />
             </p>
           </div>
           
           {/* Quick Links */}
           <div className="text-center">
-            <h3 className="font-heading font-bold text-lg mb-4">Quick Links</h3>
+            <h3 className="font-heading font-bold text-lg mb-4">{t('footer.quickLinks')}</h3>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4">
               {quickLinks.map((link) => (
                 <Link
@@ -73,7 +75,7 @@ const Footer = () => {
           
           {/* Social Links */}
           <div className="text-center">
-            <h3 className="font-heading font-bold text-lg mb-4">Connect With Me</h3>
+            <h3 className="font-heading font-bold text-lg mb-4">{t('footer.connect')}</h3>
             <div className="flex justify-center lg:justify-start gap-6">
               {socialLinks.map((social) => (
                 <a
@@ -90,7 +92,7 @@ const Footer = () => {
               ))}
             </div>
             <p className="mt-4 text-sm text-gray-400 font-body">
-              Always open to new opportunities
+              {t('footer.opportunity')}
             </p>
           </div>
           
@@ -99,7 +101,7 @@ const Footer = () => {
         {/* Divider */}
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-500 font-body text-sm">
-            Designed and developed with attention to detail
+            {t('footer.detail')}
           </p>
         </div>
       </div>

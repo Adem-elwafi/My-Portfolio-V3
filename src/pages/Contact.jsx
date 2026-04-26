@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import { FaGithub, FaLinkedin, FaEnvelope, FaTwitter, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 import { SiLeetcode, SiCodepen } from 'react-icons/si';
+import { useLanguage } from '../context/LanguageContext';
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -81,19 +83,19 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: <FaEnvelope className="text-primary" />,
-      title: 'Email',
+      title: t('contact.contactItems.email'),
       value: 'adem.elwafi@example.com',
       link: 'mailto:adem.elwafi@example.com'
     },
     {
       icon: <FaPhone className="text-primary" />,
-      title: 'Phone',
+      title: t('contact.contactItems.phone'),
       value: '+1 (555) 123-4567',
       link: 'tel:+15551234567'
     },
     {
       icon: <FaMapMarkerAlt className="text-primary" />,
-      title: 'Location',
+      title: t('contact.contactItems.location'),
       value: 'San Francisco, CA',
       link: 'https://maps.google.com'
     }
@@ -106,12 +108,11 @@ const Contact = () => {
         {/* Page Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-darkbg dark:text-white mb-6">
-            Get in <span className="text-primary dark:text-blue-400">Touch</span>
+            {t('contact.titleLead')} <span className="text-primary dark:text-blue-400">{t('contact.titleHighlight')}</span>
           </h1>
           <div className="w-24 h-1 bg-primary dark:bg-blue-400 mx-auto mb-6"></div>
           <p className="text-lg text-text-gray dark:text-gray-300 font-body max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? Feel free to reach out. 
-            I'm always open to discussing new opportunities and interesting ideas.
+            {t('contact.subtitle')}
           </p>
         </div>
         
@@ -119,13 +120,13 @@ const Contact = () => {
           {/* Left Column - Contact Form */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
             <h2 className="text-2xl font-heading font-bold text-darkbg dark:text-white mb-8 text-center">
-              Send Me a <span className="text-primary dark:text-blue-400">Message</span>
+              {t('contact.formTitleLead')} <span className="text-primary dark:text-blue-400">{t('contact.formTitleHighlight')}</span>
             </h2>
             
             {submitStatus === 'success' && (
               <div className="mb-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg">
                 <p className="text-green-700 dark:text-green-400 font-body text-center">
-                  ✅ Thank you for your message! I'll get back to you soon.
+                  ✅ {t('contact.success')}
                 </p>
               </div>
             )}
@@ -134,7 +135,7 @@ const Contact = () => {
               {/* Name Field */}
               <div>
                 <label htmlFor="name" className="block text-sm font-body font-medium text-text-gray dark:text-gray-300 mb-2">
-                  Your Name *
+                  {t('contact.labels.name')}
                 </label>
                 <input
                   type="text"
@@ -144,14 +145,14 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-primary dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all font-body bg-white dark:bg-gray-700 text-darkbg dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
-                  placeholder="John Doe"
+                  placeholder={t('contact.placeholders.name')}
                 />
               </div>
               
               {/* Email Field */}
               <div>
                 <label htmlFor="email" className="block text-sm font-body font-medium text-text-gray dark:text-gray-300 mb-2">
-                  Email Address *
+                  {t('contact.labels.email')}
                 </label>
                 <input
                   type="email"
@@ -161,14 +162,14 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-primary dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all font-body bg-white dark:bg-gray-700 text-darkbg dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
-                  placeholder="john@example.com"
+                  placeholder={t('contact.placeholders.email')}
                 />
               </div>
               
               {/* Message Field */}
               <div>
                 <label htmlFor="message" className="block text-sm font-body font-medium text-text-gray dark:text-gray-300 mb-2">
-                  Your Message *
+                  {t('contact.labels.message')}
                 </label>
                 <textarea
                   id="message"
@@ -178,7 +179,7 @@ const Contact = () => {
                   required
                   rows={5}
                   className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-primary dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all font-body resize-none bg-white dark:bg-gray-700 text-darkbg dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
-                  placeholder="Tell me about your project..."
+                  placeholder={t('contact.placeholders.message')}
                 />
               </div>
               
@@ -194,15 +195,15 @@ const Contact = () => {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Sending...
+                    {t('contact.sendButton')}...
                   </>
                 ) : (
-                  'Send Message'
+                  t('contact.sendButton')
                 )}
               </button>
               
               <p className="text-sm text-text-gray dark:text-gray-400 font-body text-center mt-4">
-                * Required fields
+                {t('contact.required')}
               </p>
             </form>
           </div>
@@ -212,7 +213,7 @@ const Contact = () => {
             {/* Contact Information */}
             <div className="bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8">
               <h2 className="text-2xl font-heading font-bold text-darkbg dark:text-white mb-6 text-center">
-                Contact <span className="text-primary dark:text-blue-400">Information</span>
+                {t('contact.infoTitleLead')} <span className="text-primary dark:text-blue-400">{t('contact.infoTitleHighlight')}</span>
               </h2>
               
               <div className="space-y-6">
@@ -241,7 +242,7 @@ const Contact = () => {
             {/* Social Links */}
             <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
               <h2 className="text-2xl font-heading font-bold text-darkbg dark:text-white mb-6 text-center">
-                Connect on <span className="text-primary dark:text-blue-400">Social</span>
+                {t('contact.socialTitleLead')} <span className="text-primary dark:text-blue-400">{t('contact.socialTitleHighlight')}</span>
               </h2>
               
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -264,7 +265,7 @@ const Contact = () => {
               </div>
               
               <p className="text-center text-text-gray dark:text-gray-300 font-body mt-6">
-                Feel free to connect with me on any platform!
+                {t('contact.socialMessage')}
               </p>
             </div>
             
@@ -275,9 +276,9 @@ const Contact = () => {
                   <span className="text-2xl">⏰</span>
                 </div>
                 <div>
-                  <h3 className="font-heading font-bold text-darkbg dark:text-white">Quick Response</h3>
+                  <h3 className="font-heading font-bold text-darkbg dark:text-white">{t('contact.responseQuickTitle')}</h3>
                   <p className="text-text-gray dark:text-gray-300 font-body text-sm">
-                    Typically replies within 24 hours
+                    {t('contact.responseQuickText')}
                   </p>
                 </div>
               </div>
@@ -286,9 +287,9 @@ const Contact = () => {
                   <span className="text-2xl">💼</span>
                 </div>
                 <div>
-                  <h3 className="font-heading font-bold text-darkbg dark:text-white">Open to Work</h3>
+                  <h3 className="font-heading font-bold text-darkbg dark:text-white">{t('contact.responseWorkTitle')}</h3>
                   <p className="text-text-gray dark:text-gray-300 font-body text-sm">
-                    Available for freelance & full-time roles
+                    {t('contact.responseWorkText')}
                   </p>
                 </div>
               </div>
@@ -299,34 +300,32 @@ const Contact = () => {
         {/* Additional Info */}
         <div className="mt-16 text-center max-w-3xl mx-auto">
           <h3 className="text-2xl font-heading font-bold text-darkbg dark:text-white mb-6">
-            Let's Build Something <span className="text-primary dark:text-blue-400">Amazing</span> Together
+            {t('contact.buildTitleLead')} <span className="text-primary dark:text-blue-400">{t('contact.buildTitleHighlight')}</span> {t('contact.buildTitleTail')}
           </h3>
           <p className="text-lg text-text-gray dark:text-gray-300 font-body mb-8">
-            Whether you need a website, a mobile app, or help with an existing project, 
-            I'm here to help bring your ideas to life. I approach every project with 
-            attention to detail and a commitment to excellence.
+            {t('contact.buildSubtitle')}
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm">
               <div className="text-primary dark:text-blue-400 text-2xl mb-3">🎯</div>
-              <h4 className="font-heading font-bold text-darkbg dark:text-white mb-2">Clear Communication</h4>
+              <h4 className="font-heading font-bold text-darkbg dark:text-white mb-2">{t('contact.values.communicationTitle')}</h4>
               <p className="text-text-gray dark:text-gray-300 text-sm">
-                Regular updates and transparent discussions throughout the project
+                {t('contact.values.communicationText')}
               </p>
             </div>
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm">
               <div className="text-primary dark:text-blue-400 text-2xl mb-3">⚡</div>
-              <h4 className="font-heading font-bold text-darkbg dark:text-white mb-2">Fast Delivery</h4>
+              <h4 className="font-heading font-bold text-darkbg dark:text-white mb-2">{t('contact.values.deliveryTitle')}</h4>
               <p className="text-text-gray dark:text-gray-300 text-sm">
-                Efficient workflows and timely delivery without compromising quality
+                {t('contact.values.deliveryText')}
               </p>
             </div>
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm">
               <div className="text-primary dark:text-blue-400 text-2xl mb-3">🤝</div>
-              <h4 className="font-heading font-bold text-darkbg dark:text-white mb-2">Ongoing Support</h4>
+              <h4 className="font-heading font-bold text-darkbg dark:text-white mb-2">{t('contact.values.supportTitle')}</h4>
               <p className="text-text-gray dark:text-gray-300 text-sm">
-                Continued assistance and maintenance after project completion
+                {t('contact.values.supportText')}
               </p>
             </div>
           </div>
@@ -337,10 +336,10 @@ const Contact = () => {
       <footer className="bg-darkbg dark:bg-gray-950 text-white py-8 mt-16">
         <div className="container mx-auto px-4 text-center">
           <p className="font-body">
-            © {new Date().getFullYear()} Adem Elwafi. All rights reserved.
+            {t('footer.copyright', { year: new Date().getFullYear() })}
           </p>
           <p className="text-gray-400 font-body text-sm mt-2">
-            Designed with React & Tailwind CSS
+            {t('contact.footerYearNote')}
           </p>
         </div>
       </footer>

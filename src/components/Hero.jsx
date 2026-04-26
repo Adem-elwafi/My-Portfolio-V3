@@ -2,9 +2,10 @@ import React, { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import personalImage from '../assets/adem-standing.png';
-import LiquidEther from './backgrounds/LiquidEther';
+import { useLanguage } from '../context/LanguageContext';
 
 const Hero = () => {
+  const { t } = useLanguage();
   // Refs for main animations
   const heroContentRef = useRef(null); // NEW: Single ref for all GSAP-controlled content
   const welcomeBadgeRef = useRef(null);
@@ -109,25 +110,7 @@ const Hero = () => {
       {/* FIXED: Background moved outside and positioned absolutely */}
       {/* This ensures it's always visible and never controlled by GSAP */}
       <div className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
-        <LiquidEther
-          colors={['#5227FF', '#FF9FFC', '#B19EEF']}
-          mouseForce={20}
-          cursorSize={100}
-          isViscous={false}
-          viscous={30}
-          iterationsViscous={32}
-          iterationsPoisson={32}
-          resolution={0.5}
-          isBounce={false}
-          autoDemo={true}
-          autoSpeed={0.5}
-          autoIntensity={2.2}
-          takeoverDuration={0.25}
-          autoResumeDelay={3000}
-          autoRampDuration={0.6}
-          style={{ width: '100%', height: '100%' }}
-        />
-      </div>
+    </div>
 
       {/* FIXED: All Hero content wrapped in heroContentRef with initial opacity: 0 */}
       {/* CSS sets opacity: 0, GSAP instantly reveals it, then runs animations */}
@@ -144,7 +127,7 @@ const Hero = () => {
             <div ref={welcomeBadgeRef} className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 dark:bg-primary/20 mb-6 overflow-hidden">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse mr-2"></div>
               <span className="text-sm font-semibold text-primary dark:text-blue-400 font-body tracking-wide">
-                Welcome to my creative space
+                {t('hero.welcome')}
               </span>
             </div>
             
@@ -158,9 +141,9 @@ const Hero = () => {
             {/* Title */}
             <div className="overflow-hidden mb-6">
               <h2 ref={titleRef} className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold text-secondary dark:text-gray-300">
-                Crafting Digital Experiences as a{' '}
+                {t('hero.titleLead')}{' '}
                 <span ref={titleSpanRef} className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  Full Stack Developer
+                  {t('hero.titleHighlight')}
                 </span>
               </h2>
             </div>
@@ -168,8 +151,7 @@ const Hero = () => {
             {/* Tagline */}
             <div className="overflow-hidden mb-8">
               <p ref={taglineRef} className="text-lg sm:text-xl text-text-gray dark:text-gray-300 font-body leading-relaxed">
-                I build modern, responsive web applications with clean code and intuitive design. 
-                Passionate about creating solutions that make a difference and push boundaries.
+                {t('hero.tagline')}
               </p>
             </div>
             
@@ -180,7 +162,7 @@ const Hero = () => {
                 className="group relative bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-lg font-body font-semibold text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden min-w-[200px] text-center"
               >
                 <span className="relative z-10 flex items-center justify-center">
-                  View My Work
+                  {t('hero.viewWork')}
                   <svg 
                     className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" 
                     fill="none" 
@@ -198,7 +180,7 @@ const Hero = () => {
                 className="group relative border-2 border-primary text-primary px-8 py-4 rounded-lg font-body font-semibold text-lg hover:text-white transition-all duration-300 hover:scale-105 overflow-hidden min-w-[200px] text-center"
               >
                 <span className="relative z-10 flex items-center justify-center">
-                  Get In Touch
+                  {t('hero.getInTouch')}
                   <svg 
                     className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" 
                     fill="none" 
@@ -216,15 +198,15 @@ const Hero = () => {
             <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-4">
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary dark:text-blue-400">50+</div>
-                <div className="text-sm text-text-gray dark:text-gray-400">Projects Completed</div>
+                <div className="text-sm text-text-gray dark:text-gray-400">{t('hero.projectsCompleted')}</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary dark:text-blue-400">18</div>
-                <div className="text-sm text-text-gray dark:text-gray-400">Technologies</div>
+                <div className="text-sm text-text-gray dark:text-gray-400">{t('hero.technologies')}</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary dark:text-blue-400">100%</div>
-                <div className="text-sm text-text-gray dark:text-gray-400">Client Satisfaction</div>
+                <div className="text-sm text-text-gray dark:text-gray-400">{t('hero.clientSatisfaction')}</div>
               </div>
             </div>
           </div>
@@ -243,7 +225,7 @@ const Hero = () => {
                 <img
                   ref={imageRef}
                   src={personalImage}
-                  alt="Adem Elwafi - Full Stack Developer"
+                  alt={t('hero.imageAlt')}
                   className="w-full h-auto object-cover"
                   style={{ 
                     minHeight: '500px',
@@ -263,7 +245,7 @@ const Hero = () => {
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2" style={{ zIndex: 10 }}>
         <div className="flex flex-col items-center">
-          <span className="text-sm text-primary dark:text-blue-400 mb-2 font-body">Scroll to explore</span>
+          <span className="text-sm text-primary dark:text-blue-400 mb-2 font-body">{t('hero.scroll')}</span>
           <div className="w-6 h-10 border-2 border-primary dark:border-blue-400 rounded-full flex justify-center">
             <div className="w-1 h-3 bg-primary dark:bg-blue-400 rounded-full mt-2 animate-bounce"></div>
           </div>
