@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
@@ -69,6 +69,7 @@ const ProjectCard = ({ project, t, demoLabel, codeLabel }) => {
 
 const Projects = () => {
   const { language, t } = useLanguage();
+  const [filter, setFilter] = useState('all');
   const demoLabelMap = {
     en: 'Live Demo',
     fr: 'Démo en direct',
@@ -86,6 +87,7 @@ const Projects = () => {
       id: 1,
       titleKey: 'projects.cards.ecommerce.title',
       descriptionKey: 'projects.cards.ecommerce.description',
+      category: 'fullStack',
       technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redux'],
       categoryKey: 'projects.cards.ecommerce.category',
       demoLink: 'https://demo.example.com',
@@ -96,6 +98,7 @@ const Projects = () => {
       id: 2,
       titleKey: 'projects.cards.task.title',
       descriptionKey: 'projects.cards.task.description',
+      category: 'fullStack',
       technologies: ['React', 'Firebase', 'Tailwind', 'Context API', 'WebSockets'],
       categoryKey: 'projects.cards.task.category',
       demoLink: 'https://taskdemo.example.com',
@@ -106,6 +109,7 @@ const Projects = () => {
       id: 3,
       titleKey: 'projects.cards.weather.title',
       descriptionKey: 'projects.cards.weather.description',
+      category: 'frontend',
       technologies: ['React', 'OpenWeather API', 'Chart.js', 'Geolocation', 'PWA'],
       categoryKey: 'projects.cards.weather.category',
       demoLink: 'https://weatherdemo.example.com',
@@ -116,6 +120,7 @@ const Projects = () => {
       id: 4,
       titleKey: 'projects.cards.portfolio.title',
       descriptionKey: 'projects.cards.portfolio.description',
+      category: 'frontend',
       technologies: ['React', 'Tailwind', 'Framer Motion', 'EmailJS', 'Vite'],
       categoryKey: 'projects.cards.portfolio.category',
       demoLink: '/',
@@ -126,6 +131,7 @@ const Projects = () => {
       id: 5,
       titleKey: 'projects.cards.chat.title',
       descriptionKey: 'projects.cards.chat.description',
+      category: 'fullStack',
       technologies: ['Socket.io', 'Express', 'React', 'WebRTC', 'PostgreSQL'],
       categoryKey: 'projects.cards.chat.category',
       demoLink: 'https://chatdemo.example.com',
@@ -136,6 +142,7 @@ const Projects = () => {
       id: 6,
       titleKey: 'projects.cards.fitness.title',
       descriptionKey: 'projects.cards.fitness.description',
+      category: 'mobile',
       technologies: ['React Native', 'GraphQL', 'MongoDB', 'JWT', 'Chart.js'],
       categoryKey: 'projects.cards.fitness.category',
       demoLink: 'https://fitnessdemo.example.com',
@@ -143,6 +150,8 @@ const Projects = () => {
       icon: '🏋️'
     }
   ];
+
+  const filteredProjects = projects.filter((p) => filter === 'all' || p.category === filter);
 
   return (
     <div className="min-h-screen bg-background dark:bg-gray-900 transition-colors duration-300">
@@ -160,16 +169,24 @@ const Projects = () => {
           
           {/* Filter Buttons */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
-            <button className="bg-primary hover:bg-secondary text-white px-5 py-2 rounded-full font-body font-medium transition-colors">
+            <button
+              onClick={() => setFilter('all')}
+              className={`px-5 py-2 rounded-full font-body font-medium transition-colors ${filter === 'all' ? 'bg-primary text-white' : 'bg-white dark:bg-gray-800 text-text-gray dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:border-primary dark:hover:border-blue-400 hover:text-primary dark:hover:text-blue-400'}`}>
               {t('projects.filters.all')}
             </button>
-            <button className="bg-white dark:bg-gray-800 text-text-gray dark:text-gray-300 border border-gray-300 dark:border-gray-600 px-5 py-2 rounded-full font-body font-medium hover:border-primary dark:hover:border-blue-400 hover:text-primary dark:hover:text-blue-400 transition-colors">
+            <button
+              onClick={() => setFilter('fullStack')}
+              className={`px-5 py-2 rounded-full font-body font-medium transition-colors ${filter === 'fullStack' ? 'bg-primary text-white' : 'bg-white dark:bg-gray-800 text-text-gray dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:border-primary dark:hover:border-blue-400 hover:text-primary dark:hover:text-blue-400'}`}>
               {t('projects.filters.fullStack')}
             </button>
-            <button className="bg-white dark:bg-gray-800 text-text-gray dark:text-gray-300 border border-gray-300 dark:border-gray-600 px-5 py-2 rounded-full font-body font-medium hover:border-primary dark:hover:border-blue-400 hover:text-primary dark:hover:text-blue-400 transition-colors">
+            <button
+              onClick={() => setFilter('frontend')}
+              className={`px-5 py-2 rounded-full font-body font-medium transition-colors ${filter === 'frontend' ? 'bg-primary text-white' : 'bg-white dark:bg-gray-800 text-text-gray dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:border-primary dark:hover:border-blue-400 hover:text-primary dark:hover:text-blue-400'}`}>
               {t('projects.filters.frontend')}
             </button>
-            <button className="bg-white dark:bg-gray-800 text-text-gray dark:text-gray-300 border border-gray-300 dark:border-gray-600 px-5 py-2 rounded-full font-body font-medium hover:border-primary dark:hover:border-blue-400 hover:text-primary dark:hover:text-blue-400 transition-colors">
+            <button
+              onClick={() => setFilter('mobile')}
+              className={`px-5 py-2 rounded-full font-body font-medium transition-colors ${filter === 'mobile' ? 'bg-primary text-white' : 'bg-white dark:bg-gray-800 text-text-gray dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:border-primary dark:hover:border-blue-400 hover:text-primary dark:hover:text-blue-400'}`}>
               {t('projects.filters.mobile')}
             </button>
           </div>
@@ -177,7 +194,7 @@ const Projects = () => {
         
         {/* Projects Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+          {filteredProjects.map((project) => (
             <ProjectCard key={project.id} project={project} t={t} demoLabel={demoLabel} codeLabel={codeLabel} />
           ))}
         </div>
